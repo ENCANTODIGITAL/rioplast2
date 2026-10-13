@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroInsumos Perú - Todo para el Agricultor y Riego Tecnificado</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        agro: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <div class="bg-agro-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1">
+            <span><i class="fa-solid fa-truck-fast mr-2 text-agro-400"></i> ¡Envíos seguros a todo el Perú (Costa, Sierra y Selva)!</span>
+            <span class="flex items-center gap-4">
+                <a href="tel:+51995089720" class="hover:underline"><i class="fa-solid fa-phone mr-1"></i> +51 995089720</a>
+                <span class="hidden md:inline">|</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-clock mr-1"></i> Lun - Sáb: 8:00 am - 6:00 pm</span>
+            </span>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-agro-700 rounded-xl flex items-center justify-center text-white text-xl font-bold shadow-md shadow-agro-700/20 group-hover:bg-agro-800 transition">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block leading-none">RioPlast</span>
+                    <span class="text-xs font-semibold text-agro-600 uppercase tracking-widest mt-1 block">Insumos agricolas y De Riego</span>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-md mx-6">
+                <div class="relative w-full">
+                    <input type="text" id="desktop-search" oninput="handleSearch(this.value)" placeholder="Buscar mangueras, aspersores, bandejas..." class="w-full bg-slate-100 border border-slate-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-agro-500 focus:bg-white transition">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-sm"></i>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCart()" class="relative p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-lg"></i>
+                    <span class="hidden sm:inline text-xs font-bold">Carrito</span>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-agro-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative bg-gradient-to-br from-slate-900 via-agro-950 to-agro-900 text-white py-20 lg:py-28 overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-agro-800/80 border border-agro-600/50 text-agro-300 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full shadow-inner">
+                        <i class="fa-solid fa-shield-halved"></i> Calidad Garantizada para el Agro Peruano
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Todo lo que tu campo necesita, <span class="text-transparent bg-clip-text bg-gradient-to-r from-agro-400 to-emerald-300">al mejor precio.</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-normal">
+                        Arma tu pedido seleccionando las cantidades exactas y cotiza directo por WhatsApp con envío inmediato a todo el Perú.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#productos" class="w-full sm:w-auto bg-agro-500 hover:bg-agro-600 text-white font-semibold px-8 py-4 rounded-xl shadow-xl shadow-agro-600/30 transition text-center flex items-center justify-center gap-2">
+                            <span>Ver Catálogo e Insumos</span>
+                            <i class="fa-solid fa-arrow-down text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-agro-600 font-bold uppercase tracking-wider text-xs block mb-1">Explore nuestro stock</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Categorías Principales</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+                <div onclick="filterCategory('riego')" class="group cursor-pointer bg-slate-50 hover:bg-agro-50 border border-slate-200 hover:border-agro-400 rounded-2xl p-5 text-center transition duration-300 shadow-sm">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-agro-600 text-2xl mb-4 group-hover:scale-110 group-hover:bg-agro-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm group-hover:text-agro-700">Riego por Goteo</h3>
+                </div>
+                <div onclick="filterCategory('mangueras')" class="group cursor-pointer bg-slate-50 hover:bg-agro-50 border border-slate-200 hover:border-agro-400 rounded-2xl p-5 text-center transition duration-300 shadow-sm">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-agro-600 text-2xl mb-4 group-hover:scale-110 group-hover:bg-agro-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-circle-notch"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm group-hover:text-agro-700">Mangueras</h3>
+                </div>
+                <div onclick="filterCategory('aspersores')" class="group cursor-pointer bg-slate-50 hover:bg-agro-50 border border-slate-200 hover:border-agro-400 rounded-2xl p-5 text-center transition duration-300 shadow-sm">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-agro-600 text-2xl mb-4 group-hover:scale-110 group-hover:bg-agro-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-hurricane"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm group-hover:text-agro-700">Aspersores</h3>
+                </div>
+                <div onclick="filterCategory('germinacion')" class="group cursor-pointer bg-slate-50 hover:bg-agro-50 border border-slate-200 hover:border-agro-400 rounded-2xl p-5 text-center transition duration-300 shadow-sm">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-agro-600 text-2xl mb-4 group-hover:scale-110 group-hover:bg-agro-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm group-hover:text-agro-700">Germinación</h3>
+                </div>
+                <div onclick="filterCategory('mallas')" class="group cursor-pointer bg-slate-50 hover:bg-agro-50 border border-slate-200 hover:border-agro-400 rounded-2xl p-5 text-center transition duration-300 shadow-sm">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-agro-600 text-2xl mb-4 group-hover:scale-110 group-hover:bg-agro-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-chess-board"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm group-hover:text-agro-700">Mallas Raschel</h3>
+                </div>
+                <div onclick="filterCategory('all')" class="group cursor-pointer bg-agro-50 hover:bg-agro-100 border border-agro-200 rounded-2xl p-5 text-center transition duration-300 shadow-sm">
+                    <div class="w-16 h-16 mx-auto bg-agro-600 text-white rounded-2xl shadow-sm flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-border-all"></i>
+                    </div>
+                    <h3 class="font-bold text-agro-800 text-sm">Ver Todo</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos" class="py-16 bg-slate-100/70 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-agro-600 font-bold uppercase tracking-wider text-xs block mb-1">Catálogo Interactivo</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Selecciona Cantidades y Agrega</h2>
+                </div>
+                <div class="flex items-center gap-2 mt-4 md:mt-0 overflow-x-auto pb-2">
+                    <button onclick="filterProducts('all')" class="category-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-agro-700 text-white shadow-sm transition">Todos</button>
+                    <button onclick="filterProducts('riego')" class="category-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">Riego</button>
+                    <button onclick="filterProducts('mangueras')" class="category-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">Mangueras</button>
+                    <button onclick="filterProducts('germinacion')" class="category-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">Germinación</button>
+                    <button onclick="filterProducts('aspersores')" class="category-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">Aspersores</button>
+                    <button onclick="filterProducts('mallas')" class="category-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">Mallas</button>
+                </div>
+            </div>
+
+            <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex justify-end transition-opacity">
+        <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl relative animate-in slide-in-from-right duration-300">
+            <!-- Modal Header -->
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-agro-600 text-white rounded-xl flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">Tu Carrito de Pedido</h3>
+                </div>
+                <button onclick="toggleCart()" class="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items Container -->
+            <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-4">
+                <!-- Items injected via JS -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-5 border-t border-slate-100 bg-slate-50 space-y-4">
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-slate-600">Total Estimado:</span>
+                    <span id="cart-total-price" class="text-xl font-extrabold text-agro-700">S/ 0.00</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Cotizar / Pedir por WhatsApp</span>
+                </button>
+                <p class="text-[11px] text-center text-slate-400">El asesor recibirá tu lista exacta de cantidades al instante.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database of products
+        const products = [
+            {
+                id: 1,
+                name: 'Manguera de Riego Polietileno 1/2" (Rollo 100m)',
+                category: 'mangueras',
+                price: 120.00,
+                unit: 'rollo',
+                icon: 'fa-circle-notch',
+                badge: 'Más Vendido',
+                desc: 'Alta resistencia a rayos UV e intemperie. Ideal para campo abierto.'
+            },
+            {
+                id: 2,
+                name: 'Aspersor Circular Agrícola 3/4" (Alcance 14m)',
+                category: 'aspersores',
+                price: 45.00,
+                unit: 'und',
+                icon: 'fa-hurricane',
+                badge: 'Alta Eficiencia',
+                desc: 'Construcción en bronce y zinc reforzado para rotación uniforme.'
+            },
+            {
+                id: 3,
+                name: 'Bandeja de Germinación 200 Cavidades (Pack 10)',
+                category: 'germinacion',
+                price: 85.00,
+                unit: 'pack',
+                icon: 'fa-grip',
+                badge: 'Profesional',
+                desc: 'Plástico virgen termoformado de alta durabilidad para almácigos.'
+            },
+            {
+                id: 4,
+                name: 'Cinta de Riego por Goteo 16mm (Bobina 1000m)',
+                category: 'riego',
+                price: 280.00,
+                unit: 'bobina',
+                icon: 'fa-droplet',
+                badge: 'Tecnificado',
+                desc: 'Espaciamiento de goteros cada 20cm, caudal regulado de 1.3 L/h.'
+            },
+            {
+                id: 5,
+                name: 'Malla Raschel Sombreo 80% (Rollo 4mx50m)',
+                category: 'mallas',
+                price: 350.00,
+                unit: 'rollo',
+                icon: 'fa-chess-board',
+                badge: 'Protección',
+                desc: 'Protección contra exceso de sol y granizo para viveros.'
+            },
+            {
+                id: 6,
+                name: 'Conector Inicial PVC para Cinta de Goteo 16mm',
+                category: 'riego',
+                price: 3.50,
+                unit: 'und',
+                icon: 'fa-wrench',
+                badge: 'Accesorios',
+                desc: 'Grapa con anillos de empaque para evitar fugas de presión.'
+            }
+        ];
+
+        // Cart state initialized from localStorage
+        let cart = JSON.parse(localStorage.getItem('agro_cart')) || [];
+
+        window.onload = function() {
+            renderProducts(products);
+            updateCartUI();
+        };
+
+        function renderProducts(itemsToRender) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            if (itemsToRender.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400 text-sm">No se encontraron productos con ese criterio.</div>`;
+                return;
+            }
+
+            itemsToRender.forEach(p => {
+                // Check if product is in cart
+                const cartItem = cart.find(item => item.id === p.id);
+                const currentQty = cartItem ? cartItem.quantity : 0;
+
+                const card = document.createElement('div');
+                card.className = 'product-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col justify-between';
+                card.dataset.category = p.category;
+                card.innerHTML = `
+                    <div>
+                        <div class="relative bg-slate-100 h-48 flex items-center justify-center p-4">
+                            <span class="absolute top-3 left-3 bg-agro-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">${p.badge}</span>
+                            <div class="text-agro-700 text-6xl">
+                                <i class="fa-solid ${p.icon}"></i>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-semibold text-agro-600 uppercase">${p.category}</span>
+                            <h3 class="font-bold text-slate-900 text-base mt-1">${p.name}</h3>
+                            <p class="text-xs text-slate-500 mt-2">${p.desc}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-slate-100 mt-4 space-y-4">
+                        <div class="flex items-center justify-between pt-3">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block">Precio unitario</span>
+                                <span class="text-lg font-extrabold text-slate-900">S/ ${p.price.toFixed(2)} <span class="text-xs font-normal text-slate-500">/ ${p.unit}</span></span>
+                            </div>
+                        </div>
+                        <!-- Quantity Controller Widget -->
+                        <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl border border-slate-200">
+                            <span class="text-xs font-medium text-slate-600 pl-1">Cantidad:</span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="changeProductQty(${p.id}, -1)" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-bold flex items-center justify-center transition shadow-sm">
+                                    <i class="fa-solid fa-minus text-xs"></i>
+                                </button>
+                                <span id="qty-${p.id}" class="w-8 text-center font-bold text-sm text-slate-900">${currentQty}</span>
+                                <button onclick="changeProductQty(${p.id}, 1)" class="w-8 h-8 rounded-lg bg-agro-600 text-white hover:bg-agro-700 font-bold flex items-center justify-center transition shadow-sm">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function changeProductQty(productId, delta) {
+            const product = products.find(p => p.id === productId);
+            let cartItem = cart.find(item => item.id === productId);
+
+            if (cartItem) {
+                cartItem.quantity += delta;
+                if (cartItem.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+            } else if (delta > 0) {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    unit: product.unit,
+                    quantity: delta
+                });
+            }
+
+            saveCart();
+            updateCartUI();
+            
+            // Update individual card qty span if visible
+            const qtySpan = document.getElementById(`qty-${productId}`);
+            if (qtySpan) {
+                const updatedItem = cart.find(item => item.id === productId);
+                qtySpan.textContent = updatedItem ? updatedItem.quantity : 0;
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('agro_cart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            // Update badge count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-badge').textContent = totalItems;
+
+            // Render items in cart drawer
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-slate-400 space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-slate-300"></i>
+                        <p class="text-sm">Tu carrito está vacío.</p>
+                        <p class="text-xs text-slate-400">Selecciona cantidades en el catálogo para agregarlas aquí.</p>
+                    </div>
+                `;
+                document.getElementById('cart-total-price').textContent = 'S/ 0.00';
+                return;
+            }
+
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+
+                const row = document.createElement('div');
+                row.className = 'flex items-center justify-between bg-slate-50 p-3 rounded-2xl border border-slate-100 gap-3';
+                row.innerHTML = `
+                    <div class="flex-1">
+                        <h4 class="text-xs font-bold text-slate-900 leading-snug">${item.name}</h4>
+                        <span class="text-[11px] text-agro-700 font-semibold block mt-0.5">S/ ${item.price.toFixed(2)} c/u</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-1 bg-white border border-slate-200 rounded-lg p-1">
+                            <button onclick="changeProductQty(${item.id}, -1)" class="w-6 h-6 rounded bg-slate-100 text-slate-700 font-bold flex items-center justify-center hover:bg-slate-200 text-xs">
+                                <i class="fa-solid fa-minus text-[10px]"></i>
+                            </button>
+                            <span class="w-6 text-center font-bold text-xs text-slate-900">${item.quantity}</span>
+                            <button onclick="changeProductQty(${item.id}, 1)" class="w-6 h-6 rounded bg-agro-600 text-white font-bold flex items-center justify-center hover:bg-agro-700 text-xs">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+
+            document.getElementById('cart-total-price').textContent = `S/ ${totalPrice.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function filterProducts(category) {
+            // Update active state in category buttons
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-agro-700', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+            event.target.classList.remove('bg-white', 'text-slate-700');
+            event.target.classList.add('bg-agro-700', 'text-white');
+
+            if (category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        function filterCategory(cat) {
+            const section = document.getElementById('productos');
+            section.scrollIntoView({ behavior: 'smooth' });
+            if (cat === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === cat);
+                renderProducts(filtered);
+            }
+        }
+
+        function handleSearch(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) {
+                renderProducts(products);
+                return;
+            }
+            const filtered = products.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+            renderProducts(filtered);
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío. Agrega productos antes de cotizar.');
+                return;
+            }
+
+            let message = "Hola, deseo realizar el siguiente pedido con envío a [Ciudad/Provincia]:\n\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                const sub = item.price * item.quantity;
+                total += sub;
+                message += `• ${item.quantity}x ${item.name} - S/ ${sub.toFixed(2)}\n`;
+            });
+
+            message += `\n*Total estimado: S/ ${total.toFixed(2)}*\n\n¿Me confirman stock y costo de envío?`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/51995089720?text=${encoded}`, '_blank');
+        }
+    </script>
+</body>
+</html>
